@@ -13,13 +13,13 @@ namespace NicePartUsage.Infrastructure
         public DbSet<Score> Scores { get; set; }
         public DbSet<Element> Elements { get; set; }
 
-        public NicePartUsageDbContext() { } // This one
+        public NicePartUsageDbContext() { }
         public NicePartUsageDbContext(DbContextOptions<NicePartUsageDbContext> options) : base(options)
         {
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer("Server=EVH12022NB;Database=NPU;Trusted_Connection=True;TrustServerCertificate=True");
+            => options.UseSqlServer("Server=.;Database=NPU;Trusted_Connection=True;TrustServerCertificate=True");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
