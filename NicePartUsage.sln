@@ -3,9 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NicePartUsage.Server", "NicePartUsage.Server\NicePartUsage.Server.csproj", "{636A4A06-1BB9-435C-9ABB-34A840C85E4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NicePartUsage.Server", "NicePartUsage.Server\NicePartUsage.Server.csproj", "{636A4A06-1BB9-435C-9ABB-34A840C85E4E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{87BA9A93-A9BB-4ED0-A484-6DF4F8E791E1} = {87BA9A93-A9BB-4ED0-A484-6DF4F8E791E1}
+		{99C087E2-D9DC-4F18-A1CD-81189D76FB6D} = {99C087E2-D9DC-4F18-A1CD-81189D76FB6D}
+		{C94FF7AF-3CA2-4729-B49F-EC6AA70F062E} = {C94FF7AF-3CA2-4729-B49F-EC6AA70F062E}
+	EndProjectSection
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "nicepartusage.client", "nicepartusage.client\nicepartusage.client.esproj", "{87BA9A93-A9BB-4ED0-A484-6DF4F8E791E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C94FF7AF-3CA2-4729-B49F-EC6AA70F062E} = {C94FF7AF-3CA2-4729-B49F-EC6AA70F062E}
+		{F204BC62-40DC-41FF-91E0-C461E506AE67} = {F204BC62-40DC-41FF-91E0-C461E506AE67}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NicePartUsage.Application", "NicePartUsage.Application\NicePartUsage.Application.csproj", "{F204BC62-40DC-41FF-91E0-C461E506AE67}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NicePartUsage.Domain", "NicePartUsage.Domain\NicePartUsage.Domain.csproj", "{99C087E2-D9DC-4F18-A1CD-81189D76FB6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NicePartUsage.Infrastructure", "NicePartUsage.Infrastructure\NicePartUsage.Infrastructure.csproj", "{C94FF7AF-3CA2-4729-B49F-EC6AA70F062E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{99C087E2-D9DC-4F18-A1CD-81189D76FB6D} = {99C087E2-D9DC-4F18-A1CD-81189D76FB6D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NicePartUsage.Web", "NicePartUsage.Web\NicePartUsage.Web.csproj", "{683E5653-9C74-4CCB-A47B-236AA14C9C22}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C94FF7AF-3CA2-4729-B49F-EC6AA70F062E} = {C94FF7AF-3CA2-4729-B49F-EC6AA70F062E}
+		{F204BC62-40DC-41FF-91E0-C461E506AE67} = {F204BC62-40DC-41FF-91E0-C461E506AE67}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +47,22 @@ Global
 		{87BA9A93-A9BB-4ED0-A484-6DF4F8E791E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87BA9A93-A9BB-4ED0-A484-6DF4F8E791E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{87BA9A93-A9BB-4ED0-A484-6DF4F8E791E1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F204BC62-40DC-41FF-91E0-C461E506AE67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F204BC62-40DC-41FF-91E0-C461E506AE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F204BC62-40DC-41FF-91E0-C461E506AE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F204BC62-40DC-41FF-91E0-C461E506AE67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99C087E2-D9DC-4F18-A1CD-81189D76FB6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C087E2-D9DC-4F18-A1CD-81189D76FB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C087E2-D9DC-4F18-A1CD-81189D76FB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C087E2-D9DC-4F18-A1CD-81189D76FB6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C94FF7AF-3CA2-4729-B49F-EC6AA70F062E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C94FF7AF-3CA2-4729-B49F-EC6AA70F062E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C94FF7AF-3CA2-4729-B49F-EC6AA70F062E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C94FF7AF-3CA2-4729-B49F-EC6AA70F062E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683E5653-9C74-4CCB-A47B-236AA14C9C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683E5653-9C74-4CCB-A47B-236AA14C9C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683E5653-9C74-4CCB-A47B-236AA14C9C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683E5653-9C74-4CCB-A47B-236AA14C9C22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

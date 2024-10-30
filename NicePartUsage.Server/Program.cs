@@ -1,11 +1,26 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using NicePartUsage.Domain.Models;
+using NicePartUsage.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<NicePartUsageDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAuthorization();
+
+builder.Services.AddIdentityCore<User>()
+    .AddEntityFrameworkStores<NicePartUsageDbContext>()
+    .AddApiEndpoints();
+
+builder.Services.AddControllers();
+
 
 var app = builder.Build();
 
@@ -26,5 +41,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapFallbackToFile("/index.html");
+
+app.MapIdentityApi<User>();
 
 app.Run();
