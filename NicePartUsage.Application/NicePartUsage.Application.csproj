@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NicePartUsage.Domain\NicePartUsage.Domain.csproj" />
+    <ProjectReference Include="..\NicePartUsage.Infrastructure\NicePartUsage.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
