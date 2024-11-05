@@ -13,7 +13,7 @@ namespace NicePartUsage.Domain.Models
         [MaxLength(250)]
         public string Description { get; set; }
 
-        public List<NpuCreation> NpuCreations { get; set; }
+        public virtual List<NpuCreation> NpuCreations { get; set; }
         public virtual ICollection<NpuCreationElement> NpuCreationElements { get; set; }
     }
 }

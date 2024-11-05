@@ -1,7 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using NicePartUsage.Domain.Models;
 
 namespace NicePartUsage.Infrastructure
@@ -18,43 +17,23 @@ namespace NicePartUsage.Infrastructure
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer("Server=.;Database=NPU;Trusted_Connection=True;TrustServerCertificate=True");
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<NpuCreation>()
                 .HasMany(npu => npu.Elements)
                 .WithMany(e => e.NpuCreations)
-                .UsingEntity<NpuCreationElement>();
+                .UsingEntity<NpuCreationElement>(
+                    "NpuCreationElement",
+                    e => e.HasOne(e => e.Element).WithMany(e => e.NpuCreationElements).HasForeignKey(e => e.ElementId).HasPrincipalKey(c => c.Id),
+                    e => e.HasOne(e => e.NpuCreation).WithMany(e => e.NpuCreationElements).HasForeignKey(e => e.NpuCreationId).HasPrincipalKey(c => c.Id)
+                );
 
-            modelBuilder.Entity<NpuCreationElement>()
-                .HasOne(nce => nce.NpuCreation)
-                .WithMany(nc => nc.NpuCreationElements)
-                .HasForeignKey(nce => nce.NpuCreationId)
-                .OnDelete(DeleteBehavior.Restrict); // Disable cascading delete
-
-            modelBuilder.Entity<NpuCreationElement>()
-                .HasOne(nce => nce.Element)
-                .WithMany(le => le.NpuCreationElements)
-                .HasForeignKey(nce => nce.ElementId)
-                .OnDelete(DeleteBehavior.Restrict); // Disable cascading delete
+            modelBuilder.Entity<NpuCreation>()
+                .HasMany(npu => npu.Scores)
+                .WithOne(s => s.NpuCreation)
+                .HasForeignKey(s => s.CreationId);
 
             modelBuilder.Entity<User>().Property(u => u.UserName).IsRequired();
-
-            // Disable cascade delete for Score <-> NpuCreation relationship to prevent multiple cascade paths
-            modelBuilder.Entity<Score>()
-                .HasOne(s => s.NpuCreation)
-                .WithMany(nc => nc.Scores)
-                .HasForeignKey(s => s.CreationId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            // Optionally, you can also disable cascade delete for Score <-> User relationship
-            modelBuilder.Entity<Score>()
-                .HasOne(s => s.User)
-                .WithMany(u => u.Scores)
-                .HasForeignKey(s => s.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }

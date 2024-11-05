@@ -175,7 +175,7 @@ namespace NicePartUsage.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Elements");
+                    b.ToTable("Elements", (string)null);
                 });
 
             modelBuilder.Entity("NicePartUsage.Domain.Models.NpuCreation", b =>
@@ -211,7 +211,7 @@ namespace NicePartUsage.Infrastructure.Migrations
 
                     b.HasIndex("CreatorId");
 
-                    b.ToTable("NpuCreations");
+                    b.ToTable("NpuCreations", (string)null);
                 });
 
             modelBuilder.Entity("NicePartUsage.Domain.Models.NpuCreationElement", b =>
@@ -234,7 +234,7 @@ namespace NicePartUsage.Infrastructure.Migrations
 
                     b.HasIndex("NpuCreationId");
 
-                    b.ToTable("NpuCreationElement");
+                    b.ToTable("NpuCreationElement", (string)null);
                 });
 
             modelBuilder.Entity("NicePartUsage.Domain.Models.Score", b =>
@@ -264,7 +264,7 @@ namespace NicePartUsage.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Scores");
+                    b.ToTable("Scores", (string)null);
                 });
 
             modelBuilder.Entity("NicePartUsage.Domain.Models.User", b =>

@@ -6,6 +6,7 @@ namespace NicePartUsage.Domain.Models
     {
         [Key]
         public int Id { get; set; }
+
         public List<Element> Elements { get; set; }
 
         [Required]
